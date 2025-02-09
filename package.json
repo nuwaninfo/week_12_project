@@ -1,0 +1,14 @@
+{
+  "name": "week_12_project",
+  "version": "1.0.0",
+  "description": "Fullstack app",
+  "license": "ISC",
+  "author": "Nuwan Fernando",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd client && npm install",
+    "dev:clent": "cd client && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
