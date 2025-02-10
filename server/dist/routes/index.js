@@ -16,9 +16,11 @@ router.post("/api/book", async (req, res) => {
             author: req.body.author,
             pages: req.body.pages,
         });
-        await book.save();
+        const savedBook = await book.save();
         console.log("Book saved!");
-        res.status(201).json({ message: "Book saved successfully" });
+        res
+            .status(201)
+            .json({ data: savedBook, message: "Book saved successfully" });
     }
     catch (error) {
         console.error(`Error while saving book: ${error}`);

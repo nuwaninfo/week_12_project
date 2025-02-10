@@ -24,7 +24,7 @@ function App() {
         throw new Error("Error fecthing data")
       }
       const data = await response.json()
-      console.log(data)
+      console.log(data.data.name)
     } catch (error) {
       if (error instanceof Error) {
         console.log(`Error when trying save data: ${error.message}`)
