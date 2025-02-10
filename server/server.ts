@@ -3,6 +3,7 @@ import path from "path"
 import router from "./routes/index"
 //import morgan from "morgan"
 import mongoose, { Connection } from "mongoose"
+import cors, { CorsOptions } from "cors"
 
 const app: Express = express()
 const port: number = 1234
@@ -14,9 +15,16 @@ const db: Connection = mongoose.connection
 
 db.on("error", console.error.bind(console, "MongoDB connection error"))
 
+if (process.env.NODE_ENV === "development") {
+  const corsOptions: CorsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200,
+  }
+  app.use(cors(corsOptions))
+}
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-//app.use(morgan("dev"))
 
 app.use(express.static(path.join(__dirname, "../public")))
 app.use("/", router)
